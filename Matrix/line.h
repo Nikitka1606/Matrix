@@ -44,7 +44,7 @@ public:
     }
 
     void clearTail(vector<vector<int>> permissiveMatrix) {        
-        if (yCoord > length) {
+        if (yCoord > length && yCoord - length <= yMaxCoord) {
             for (int x = xCoord; x < xCoord + 3; x++) {                
                 if (permissiveMatrix[yCoord - length - 1][x] == 1 && (x % 2 == (yCoord - length - 1) % 2)) {
                     sym->clearSym(x, yCoord - length - 1);

@@ -1,7 +1,12 @@
 ﻿  Matrix.cpp
-C:\Users\halni\source\repos\Matrix\Matrix\manager.h(45,20): warning C4244: =: преобразование "double" в "clock_t", возможна потеря данных
-C:\Users\halni\source\repos\Matrix\Matrix\manager.h(46,21): warning C4244: =: преобразование "double" в "clock_t", возможна потеря данных
-C:\Users\halni\source\repos\Matrix\Matrix\manager.h(47,21): warning C4244: =: преобразование "double" в "clock_t", возможна потеря данных
-C:\Users\halni\source\repos\Matrix\Matrix\manager.h(48,19): warning C4244: =: преобразование "double" в "clock_t", возможна потеря данных
-C:\Users\halni\source\repos\Matrix\Matrix\manager.h(84,37): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-  Matrix.vcxproj -> C:\Users\halni\source\repos\Matrix\x64\Debug\Matrix.exe
+C:\Users\halni\Documents\Matr\Matrix\manager.h(47,20): warning C4244: =: преобразование "double" в "clock_t", возможна потеря данных
+C:\Users\halni\Documents\Matr\Matrix\manager.h(48,21): warning C4244: =: преобразование "double" в "clock_t", возможна потеря данных
+C:\Users\halni\Documents\Matr\Matrix\manager.h(49,21): warning C4244: =: преобразование "double" в "clock_t", возможна потеря данных
+C:\Users\halni\Documents\Matr\Matrix\manager.h(50,19): warning C4244: =: преобразование "double" в "clock_t", возможна потеря данных
+C:\Users\halni\Documents\Matr\Matrix\manager.h(86,37): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\halni\Documents\Matr\Matrix\manager.h(88,37): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=clock_t
+          ]
+  Matrix.vcxproj -> C:\Users\halni\Documents\Matr\x64\Debug\Matrix.exe

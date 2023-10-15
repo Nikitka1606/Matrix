@@ -31,6 +31,8 @@ private:
     vector<int> zeroFill;
     vector<vector<int>> permissiveMatrix;
 
+    vector<clock_t> timeDelts;
+
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 public:
     Manager(int len, int heigth, int width, int freq, int speed, bool epilFlag) {        
@@ -83,67 +85,82 @@ public:
             if (rand() % (31 / freq) == 0) {
                 Line* ln = new Line(speed, lenLin, heigth, width, epilFlag);
                 Lines.push_back(*ln);
+                timeDelts.push_back(0.0);
             }
         }              //конец #2
 
-        if ((double)(timeStart - speedTime) / CLOCKS_PER_SEC >= speed) {
-            speedTime = timeStart; 
-
+        /*if ((double)(timeStart - speedTime) / CLOCKS_PER_SEC >= speed) {
+            speedTime = timeStart; */
+            
             for (size_t line = 0; line < Lines.size(); line++) {    
-                xy = Lines[line].getLinCoords();                                           
+                timeStart = clock();
+                if ((double)(timeStart - timeDelts[line]) / CLOCKS_PER_SEC >= speed) {
+                    timeDelts[line] = timeStart;
+                    xy = Lines[line].getLinCoords();
 
-                backCoords = Lines[line].moveLine();
+                    backCoords = Lines[line].moveLine();
 
-                if (xy.second < heigth) {
-                    for (size_t i = 0; i < backCoords.size(); i++) {
-                        xL = backCoords[i].first;
-                        yL = backCoords[i].second;                        
-                        permissiveMatrix[yL][xL]++;
-                        toClear.push_back(backCoords[i]);
+                    
+
+                    if (xy.second < heigth) {
+                        for (size_t i = 0; i < backCoords.size(); i++) {
+                            xL = backCoords[i].first;
+                            yL = backCoords[i].second;
+                            permissiveMatrix[yL][xL]++;
+                            toClear.push_back(backCoords[i]);
+                        }
+                        if (backCoords.size() == 2) {
+                            toClear[toClear.size() - 2].first += width + 1;
+                        }
                     }
-                    if (backCoords.size() == 2) {
-                        toClear[toClear.size() - 2].first += width + 1;
+
+                    Lines[line].clearTail(permissiveMatrix);
+
+                    if (xy.second > lenLin - 1) {
+                        if (xy.second < heigth + lenLin) {
+                            if (toClear[0].first >= width + 1) {
+                                toClear[0].first -= width + 1;
+                                countOfCoords = 2;
+                            }
+                            else {
+                                countOfCoords = 1;
+                            }
+                            for (size_t i = 0; i < countOfCoords; i++) {
+                                xL = toClear[0].first;
+                                yL = toClear[0].second;
+                                permissiveMatrix[yL][xL]--;
+                                toClear.erase(toClear.begin());
+                            }
+                        }
+                    }
+
+                    for (int k = 0; k < width; k++) {
+                        if (permissiveMatrix[heigth - 1][k] == 0) {
+                            gotoxy(k, heigth - 1);
+                            printf("%c", ' ');
+                        }
+                    }
+
+                    if (xy.second > heigth + lenLin) {
+                        Lines[line].~Line();
+                        Lines.erase(Lines.begin() + line);
+                        timeDelts.erase(timeDelts.begin() + line);
                     }
                 }
-
-                Lines[line].clearTail(permissiveMatrix);
-
-                if (xy.second > lenLin - 1) {
-                    if (xy.second < heigth + lenLin) {
-                        if (toClear[0].first >= width + 1) {
-                            toClear[0].first -= width + 1;
-                            countOfCoords = 2;
-                        }
-                        else {
-                            countOfCoords = 1;
-                        }
-                        for (size_t i = 0; i < countOfCoords; i++) {
-                            xL = toClear[0].first;
-                            yL = toClear[0].second;
-                            permissiveMatrix[yL][xL]--;
-                            toClear.erase(toClear.begin());
-                        }
-                    }
-                }                
-                                
-                if (xy.second > heigth + lenLin ) {
-                    Lines[line].~Line();
-                    Lines.erase(Lines.begin() + line);
-                }                
             }
 
-            for (int i = 0; i < heigth; i++) { //отрисовка матрицы разрешений под основной картинкой для отладки
-                for (int j = 0; j < width; j++) {
-                    if (permissiveMatrix[i][j] != 0) {
-                        gotoxy(j, i + 30);
-                        printf("%i", permissiveMatrix[i][j]);
-                    }
-                    else {
-                        gotoxy(j, i + 30);
-                        printf("%c", ' ');
-                    }
-                }
-            }
-        }
+            //for (int i = 0; i < heigth; i++) { //отрисовка матрицы разрешений под основной картинкой для отладки
+            //    for (int j = 0; j < width; j++) {
+            //        if (permissiveMatrix[i][j] != 0) {
+            //            gotoxy(j, i + 30);
+            //            printf("%i", permissiveMatrix[i][j]);
+            //        }
+            //        else {
+            //            gotoxy(j, i + 30);
+            //            printf("%c", ' ');
+            //        }
+            //    }
+            //}
+        //}
     }
 };
