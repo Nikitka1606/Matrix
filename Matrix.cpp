@@ -1,9 +1,4 @@
-﻿#include<iostream>
-#include<stdio.h>
-#include<string.h>
-#include<windows.h>
-#include "manager.h"
-using namespace std;
+﻿#include "Manager.h"
 
 void hidecursor()
 {
