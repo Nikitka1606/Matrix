@@ -13,12 +13,19 @@ private:
 
     clock_t timeStart;
     clock_t freqTime;
+    clock_t bombTime;
+
+    int fr;
+
+    Symbol *sym = nullptr;
 
     vector<Line*> Lines;
+    vector<Explosion*> bombs;
     pair<int, int> xy;
     vector<int> zeroFill;
     vector<vector<int>> permissiveMatrix;
-    vector<double> timeDeltas;
+    vector<double> linesTimeDeltas;
+    vector<double> bombsTimeDeltas;
 public:
     Manager(int, int, int, int, int, char);
     void startLines();

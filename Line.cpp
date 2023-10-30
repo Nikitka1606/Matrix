@@ -15,10 +15,23 @@ Line::Line(int len, int maxY, int maxX, char epilFlag) {
     sym = new Symbol();
 }
 
-pair<int, int> Line::getLinCoords() {
-    xy.first = xCoord;
-    xy.second = yCoord;
-    return xy;
+vector<vector<int>> Line::exuplosion(vector<vector<int>> permissiveMatrix) {
+    if (yCoord > length - 1) {
+        for (int x = xCoord; x < xCoord + 3; x++) {
+            if (x % 2 == (yCoord - length) % 2) {
+                if (permissiveMatrix[yCoord - length][x] == 1) {
+                    sym->clearSym(x, yCoord - length);
+                }
+                permissiveMatrix[yCoord - length][x]--;
+            }
+        }
+    }
+    length--;
+    return permissiveMatrix;
+}
+
+int Line::getLen() const{
+    return length;
 }
 
 vector<vector<int>> Line::moveLine(vector<vector<int>> permissiveMatrix) {

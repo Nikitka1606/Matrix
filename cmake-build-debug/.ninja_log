@@ -1,0 +1,27 @@
+# ninja log v5
+3	1090	7203842469993147	CMakeFiles/Matrix.dir/Matrix.cpp.obj	9e0a9372c85938af
+10	829	7193588133613062	CMakeFiles/Matrix.dir/gotoxy.cpp.obj	66c9dc8478b90fb2
+1181	1330	7204046161727796	Matrix.exe	972e85a9a3df1322
+2	1050	7193651626887865	CMakeFiles/Matrix.dir/Symbol.cpp.obj	5c19d44fc5fc6402
+9	1069	7203842469813158	CMakeFiles/Matrix.dir/Line.cpp.obj	e79900a4bb2ba909
+1	122	7202230671157868	build.ninja	85ca565770c4841c
+3	901	7192688047488904	CMakeFiles/Matrix.dir/symbol.cpp.obj	da78977d80d7914f
+3	1171	7203851096510556	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+7	1196	7202195962880110	CMakeFiles/Matrix.dir/Figure.cpp.obj	aededed1064200bb
+2	1181	7204046160261048	CMakeFiles/Matrix.dir/Explosion.cpp.obj	47c1af90bf9c5269
+3	1135	7204046510875554	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+1136	1247	7204046511985557	Matrix.exe	972e85a9a3df1322
+3	1130	7204048981424610	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+1130	1241	7204048982534610	Matrix.exe	972e85a9a3df1322
+2	1113	7204051729909447	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+1113	1224	7204051731019448	Matrix.exe	972e85a9a3df1322
+2	1122	7204054154516578	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+1122	1234	7204054155636580	Matrix.exe	972e85a9a3df1322
+2	1122	7204054657308300	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+1123	1233	7204054658408298	Matrix.exe	972e85a9a3df1322
+3	1145	7204056807573639	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+1146	1257	7204056808683597	Matrix.exe	972e85a9a3df1322
+3	1032	7204057816631777	CMakeFiles/Matrix.dir/Matrix.cpp.obj	9e0a9372c85938af
+1032	1149	7204057817781777	Matrix.exe	972e85a9a3df1322
+2	1157	7204067008149015	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+1158	1272	7204067009299014	Matrix.exe	972e85a9a3df1322

@@ -13,4 +13,8 @@ add_executable(Matrix
         Symbol.cpp
         Line.cpp
         Manager.cpp
+        Figure.h
+        Figure.cpp
+        Explosion.h
+        Explosion.cpp
 )

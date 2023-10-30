@@ -62,9 +62,6 @@ int main()
         printf("Do you want to become mad? [Y/N/Z] > ");
         while ((getchar()) != '\n');
         EpilMode = getchar();
-        /*if (EpilMode == 'Y' || EpilMode == 'y') {
-            epilMode = true;
-        }*/
         pass = true;
     }
     system("cls");
