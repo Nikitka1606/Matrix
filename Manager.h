@@ -7,6 +7,9 @@ private:
     int height;
     int width;
     int freq;
+    int minER;
+    int maxER;
+    int freqExpl;
     char epilFlag;
     double spawnTime;
     double speed;
@@ -27,6 +30,6 @@ private:
     vector<double> linesTimeDeltas;
     vector<double> bombsTimeDeltas;
 public:
-    Manager(int, int, int, int, int, char);
+    Manager(int, int, int, int, int, char, int, int, int);
     void startLines();
 };

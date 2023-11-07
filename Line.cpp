@@ -19,7 +19,7 @@ vector<vector<int>> Line::exuplosion(vector<vector<int>> permissiveMatrix) {
     if (yCoord > length - 1) {
         for (int x = xCoord; x < xCoord + 3; x++) {
             if (x % 2 == (yCoord - length) % 2) {
-                if (permissiveMatrix[yCoord - length][x] == 1) {
+                if (permissiveMatrix[yCoord - length][x] % 100 == 1) {
                     sym->clearSym(x, yCoord - length);
                 }
                 permissiveMatrix[yCoord - length][x]--;

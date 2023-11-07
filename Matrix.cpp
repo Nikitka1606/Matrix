@@ -9,19 +9,20 @@ void hidecursor()
     SetConsoleCursorInfo(consoleHandle, &info);
 }
 
-int main()
-{
+int main() {
     int lineFreq = 0;
     int lineVel = 0;
     int lineLength = 0;
+    int minExplR;
+    int maxExplR = 0;
+    int explFreq = 0;
     int displayHeigth = 30;
     int displayWidth = 120;
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    bool epilMode = false;
     char EpilMode;
 
     bool pass = false;
-    printf("Matrix: the nachalo\n");
+    printf("Matrix: the prodolzenie\n");
+    /*
     while (pass == false) {
         printf("Enter the frequency of mind reading [1-30] > ");
         scanf_s("%i", &lineFreq);
@@ -32,42 +33,136 @@ int main()
             pass = true;
         }
     }
-    pass = false;
+    pass = false;*/
 
-    while (pass == false) {
-        printf("Enter the veilocity of mind reading [1-30] > ");
-        scanf_s("%d", &lineVel);
-        if (lineVel > 30 || lineVel < 1) {
-            printf("Entered veilocity must be in this range: [1-30]\n");
+    while (true) {
+        try {
+            printf("Enter the frequency of mind reading [1-30] > ");
+            if (scanf_s("%d", &lineFreq) != 1) {
+                while (fgetc(stdin) != '\n');
+                throw invalid_argument("Entered value must be integer.");
+            }
+            if (lineFreq < 1 || lineFreq > 30) {
+                throw out_of_range("Entered frequency must be in this range: [1-30]");
+            }
+            break;
         }
-        else {
-            pass = true;
+        catch (const invalid_argument &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
+        catch (const out_of_range &e) {
+            fprintf(stderr, "%s\n", e.what());
         }
     }
-    pass = false;
 
-    while (pass == false) {
-        printf("Enter the length of mind reading [1-30] > ");
-        scanf_s("%d", &lineLength);
-        if (lineLength > 30 || lineLength < 1) {
-            printf("Entered the length must be in this range: [1-30]\n");
+    while (true) {
+        try {
+            printf("Enter the velocity of mind reading [1-30] > ");
+            if (scanf_s("%d", &lineVel) != 1) {
+                while (fgetc(stdin) != '\n');
+                throw invalid_argument("Entered value must be integer.");
+            }
+            if (lineVel < 1 || lineVel > 30) {
+                throw out_of_range("Entered velocity must be in this range: [1-30]");
+            }
+            break;
         }
-        else {
-            pass = true;
+        catch (const invalid_argument &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
+        catch (const out_of_range &e) {
+            fprintf(stderr, "%s\n", e.what());
         }
     }
-    pass = false;
 
-    while (pass == false) {
-        printf("Do you want to become mad? [Y/N/Z] > ");
-        while ((getchar()) != '\n');
-        EpilMode = getchar();
-        pass = true;
+    while (true) {
+        try {
+            printf("Enter the length of mind reading [1-30] > ");
+            if (scanf_s("%d", &lineLength) != 1) {
+                while (fgetc(stdin) != '\n');
+                throw invalid_argument("Entered value must be integer.");
+            }
+            if (lineLength < 1 || lineLength > 30) {
+                throw out_of_range("Entered value must be in this range: [1-30]");
+            }
+            break;
+        }
+        catch (const invalid_argument &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
+        catch (const out_of_range &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
     }
+
+    while (true) {
+        try {
+            printf("Enter minimal radius of explosions [1-10] > ");
+            if (scanf_s("%i", &minExplR) != 1) {
+                while (fgetc(stdin) != '\n');
+                throw invalid_argument("Entered value must be integer.");
+            }
+            if (minExplR < 1 || minExplR > 10) {
+                throw out_of_range("Entered value must be in this range: [1-10]");
+            }
+            break;
+        }
+        catch (const invalid_argument &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
+        catch (const out_of_range &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
+    }
+
+    while (true) {
+        try {
+            printf("Enter maximum radius of explosions [%i-10] > ", minExplR);
+            if (scanf_s("%d", &maxExplR) != 1) {
+                while (fgetc(stdin) != '\n');
+                throw invalid_argument("Entered value must be integer.");
+            }
+            if (maxExplR < 1 || maxExplR > 10) {
+                throw out_of_range("Entered value must be over minimum radius and in this range: [1-10]");
+            }
+            break;
+        }
+        catch (const invalid_argument &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
+        catch (const out_of_range &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
+    }
+
+    while (true) {
+        try {
+            printf("Enter frequency of explosions [1-1000] > ");
+            if (scanf_s("%d", &explFreq) != 1) {
+                while (fgetc(stdin) != '\n');
+                throw invalid_argument("Entered value must be integer.");
+            }
+            if (explFreq < 1 || explFreq > 1000) {
+                throw out_of_range("Entered value must in this range: [1-1000]");
+            }
+            break;
+        }
+        catch (const invalid_argument &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
+        catch (const out_of_range &e) {
+            fprintf(stderr, "%s\n", e.what());
+        }
+    }
+
+    printf("Do you want to become mad? [Y/N/Z] > ");
+    while ((getchar()) != '\n');
+    EpilMode = getchar();
+
     system("cls");
 
     hidecursor();
-    Manager man(lineLength, displayHeigth, displayWidth, lineFreq, lineVel, EpilMode);
+    Manager man(lineLength, displayHeigth, displayWidth, lineFreq, lineVel, EpilMode, minExplR, maxExplR, explFreq);
     while (true) {
         man.startLines();
     }
