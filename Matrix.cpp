@@ -10,12 +10,12 @@ void hidecursor()
 }
 
 int main() {
-    int lineFreq = 0;
-    int lineVel = 0;
-    int lineLength = 0;
-    int minExplR;
-    int maxExplR = 0;
-    int explFreq = 0;
+    int lineFreq = 0; //frequency of lines spawn
+    int lineVel = 0; //velocity
+    int lineLength = 0; //length
+    int minExplR; //minimal Explosion radius
+    int maxExplR = 0; //max radius
+    int explFreq = 0; //explosion frequency
     int displayHeigth = 30;
     int displayWidth = 120;
     char EpilMode;
@@ -34,7 +34,7 @@ int main() {
         }
     }
     pass = false;*/
-
+//next bunch of code just take input values correctly
     while (true) {
         try {
             printf("Enter the frequency of mind reading [1-30] > ");

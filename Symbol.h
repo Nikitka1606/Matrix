@@ -9,7 +9,7 @@ private:
     COORD coord;
 public:
     Symbol();
-    void gotoxy(int column, int line);
-    void drawSym(int, int, int, char);
-    void clearSym(int, int);
+    void gotoxy(int column, int line); //function that can set the cursor to x;y position on the screen
+    void drawSym(int, int, int, char); //set the color and draws a random symbol
+    void clearSym(int, int); //clears symbol from the screen
 };

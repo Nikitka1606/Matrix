@@ -11,9 +11,6 @@ Manager::Manager(int len, int height, int width, int freq, int speed, char epilF
     maxER = maxExplR;
     freqExpl = explFreq;
     freqTime = 0.0;
-    timeStart = 0.0;
-
-    fr = 0;
 
     for (int j = 0; j <= width; j++) {
         zeroFill.push_back(0);
@@ -27,7 +24,7 @@ Manager::Manager(int len, int height, int width, int freq, int speed, char epilF
 void Manager::startLines() {
     timeStart = clock();
 
-    if ((double)(timeStart - freqTime) / CLOCKS_PER_SEC >= spawnTime) {
+    if ((double)(timeStart - freqTime) / CLOCKS_PER_SEC >= spawnTime) { //this one checks section of time and spawn lines with a definite chance
         freqTime = timeStart;
         if (rand() % (31 / freq) == 0) {
             Line *ln = new Line(lenLin, height, width, epilFlag);
@@ -36,32 +33,32 @@ void Manager::startLines() {
         }
     }
 
-    for (size_t b = 0; b < bombs.size(); b++) {
+    for (size_t b = 0; b < bombs.size(); b++) { //runs through bombs container and wide the circles of explosion
         timeStart = clock();
-        if ((double)(timeStart - bombsTimeDeltas[b]) / CLOCKS_PER_SEC >= 0.5) {
+        if ((double)(timeStart - bombsTimeDeltas[b]) / CLOCKS_PER_SEC >= 0.5) { //every 0.5 of sec it wide the circles
             bombsTimeDeltas[b] = timeStart;
-            permissiveMatrix = bombs[b]->kats(permissiveMatrix);
+            permissiveMatrix = bombs[b]->katsu(permissiveMatrix, false);
         }
-        if (bombs[b]->getRad() > 11) {
+        if (bombs[b]->getRad() > maxER + 2) {
             delete bombs[b];
             bombs.erase(bombs.begin() + b);
             bombsTimeDeltas.erase(bombsTimeDeltas.begin() + b);
         }
     }
 
-    for (size_t line = 0; line < Lines.size(); line++) {
+    for (size_t line = 0; line < Lines.size(); line++) { //runs through lines container and moves them
         timeStart = clock();
         if ((double)(timeStart - linesTimeDeltas[line]) / CLOCKS_PER_SEC >= speed) {
             linesTimeDeltas[line] = timeStart;
 
             permissiveMatrix = Lines[line]->moveLine(permissiveMatrix);
             xy = Lines[line]->getCoords();
-            if (rand() % freqExpl == 0) {
+            if (rand() % freqExpl == 0) { //if line moves, it can explode with a chance
                 permissiveMatrix = Lines[line]->exuplosion(permissiveMatrix);
                 Explosion *expl = new Explosion(xy.first + 1, xy.second, minER, maxER, height, width);
                 bombs.push_back(expl);
                 bombsTimeDeltas.push_back(0.0);
-                permissiveMatrix = expl->kats(permissiveMatrix);
+                permissiveMatrix = expl->katsu(permissiveMatrix, false);
             }
 
             if (xy.second > height + Lines[line]->getLen() || Lines[line]->getLen() < 1) {

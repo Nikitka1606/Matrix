@@ -3,32 +3,29 @@
 #include "ctime"
 class Manager {
 private:
-    int lenLin;
+    int lenLin; //line length
     int height;
     int width;
-    int freq;
-    int minER;
-    int maxER;
-    int freqExpl;
-    char epilFlag;
-    double spawnTime;
-    double speed;
+    int freq; // line frequency
+    int minER; // minimal Explosion radius
+    int maxER; // max radius
+    int freqExpl; // explosion freq
+    char epilFlag; // epilepsy flag
+    double spawnTime; //section of time in which it will try to spawn line
+    double speed; // lines speed
 
     clock_t timeStart;
     clock_t freqTime;
-    clock_t bombTime;
 
-    int fr;
+    Symbol *sym = nullptr; // works only with projection of permissive matrix
 
-    Symbol *sym = nullptr;
-
-    vector<Line*> Lines;
-    vector<Explosion*> bombs;
+    vector<Line*> Lines; //container with lines pointers
+    vector<Explosion*> bombs; //same to the circles of explosion
     pair<int, int> xy;
     vector<int> zeroFill;
-    vector<vector<int>> permissiveMatrix;
-    vector<double> linesTimeDeltas;
-    vector<double> bombsTimeDeltas;
+    vector<vector<int>> permissiveMatrix; //this matrix will contain data of lines intersections
+    vector<double> linesTimeDeltas; //containers with variables that help to determine the moment of move
+    vector<double> bombsTimeDeltas; //
 public:
     Manager(int, int, int, int, int, char, int, int, int);
     void startLines();

@@ -6,17 +6,12 @@ private:
     int maxR;
     int xMaxCoord;
     double curR;
-    int inR;
-    int inRsq;
     int val;
     int val1;
-    double sqR;
-    int dx;
-    int x0;
     double kSqueeze;
 public:
     Explosion(int, int, int, int, int, int);
-    vector<vector<int>> kats(vector<vector<int>>);
+    vector<vector<int>> katsu(vector<vector<int>>, bool); //spawn and widen the circle of explosion
     int getRad();
     ~Explosion();
 };
