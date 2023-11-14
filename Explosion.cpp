@@ -48,8 +48,7 @@ vector<vector<int>> Explosion::katsu(vector<vector<int>> permissiveMatrix, bool 
                             sym->drawSym(x, y, rand() % 15 + 1, 'n');
                             permissiveMatrix[y][x] += 100;
                         }
-                    }
-                    else {
+                    } else {
                         val = pow(x - xCoord, 2) / pow(curR, 2) + pow(y - yCoord, 2) / pow(curR / 1.9, 2);
                         curR -= 1.5;
                         val1 = pow(x - xCoord, 2) / pow(curR, 2) + pow(y - yCoord, 2) / pow(curR * kSqueeze, 2);

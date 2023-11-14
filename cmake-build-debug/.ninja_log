@@ -46,3 +46,17 @@
 3	1164	7211785113269170	CMakeFiles/Matrix.dir/Matrix.cpp.obj	9e0a9372c85938af
 8	1333	7211785114959164	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
 1334	1483	7211785116433635	Matrix.exe	972e85a9a3df1322
+3	2721	7214125865092319	CMakeFiles/Matrix.dir/Symbol.cpp.obj	5c19d44fc5fc6402
+26	2723	7214125865092319	CMakeFiles/Matrix.dir/Figure.cpp.obj	aededed1064200bb
+12	2730	7214125865122218	CMakeFiles/Matrix.dir/Explosion.cpp.obj	47c1af90bf9c5269
+16	2731	7214125865122218	CMakeFiles/Matrix.dir/Line.cpp.obj	e79900a4bb2ba909
+8	2732	7214125865191985	CMakeFiles/Matrix.dir/Matrix.cpp.obj	9e0a9372c85938af
+21	2784	7214125865471050	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+2785	3101	7214125868780059	Matrix.exe	972e85a9a3df1322
+2	929	7214131069293484	CMakeFiles/Matrix.dir/Explosion.cpp.obj	47c1af90bf9c5269
+929	1085	7214131070847224	Matrix.exe	972e85a9a3df1322
+7	970	7214132492539491	CMakeFiles/Matrix.dir/Explosion.cpp.obj	47c1af90bf9c5269
+3	1189	7214132494722827	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+1189	1576	7214132498585859	Matrix.exe	972e85a9a3df1322
+3	1343	7216505663499267	CMakeFiles/Matrix.dir/Manager.cpp.obj	1d47ffc8bd8bec9a
+1344	1496	7216505665014603	Matrix.exe	972e85a9a3df1322

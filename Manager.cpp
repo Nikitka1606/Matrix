@@ -53,7 +53,7 @@ void Manager::startLines() {
 
             permissiveMatrix = Lines[line]->moveLine(permissiveMatrix);
             xy = Lines[line]->getCoords();
-            if (rand() % freqExpl == 0) { //if line moves, it can explode with a chance
+            if (rand() % (1001 / freqExpl) == 0) { //if line moves, it can explode with a chance
                 permissiveMatrix = Lines[line]->exuplosion(permissiveMatrix);
                 Explosion *expl = new Explosion(xy.first + 1, xy.second, minER, maxER, height, width);
                 bombs.push_back(expl);
