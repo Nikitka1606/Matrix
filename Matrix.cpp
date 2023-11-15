@@ -19,8 +19,7 @@ int main() {
     int displayHeigth = 30;
     int displayWidth = 120;
     char EpilMode;
-
-    bool pass = false;
+    char cardioMode;
     printf("Matrix: the prodolzenie\n");
     /*
     while (pass == false) {
@@ -155,6 +154,10 @@ int main() {
         }
     }
 
+    printf("Do you want to see hearts? [Y/N] > ");
+    while ((getchar()) != '\n');
+    cardioMode = getchar();
+
     printf("Do you want to become mad? [Y/N/Z] > ");
     while ((getchar()) != '\n');
     EpilMode = getchar();
@@ -162,7 +165,7 @@ int main() {
     system("cls");
 
     hidecursor();
-    Manager man(lineLength, displayHeigth, displayWidth, lineFreq, lineVel, EpilMode, minExplR, maxExplR, explFreq);
+    Manager man(lineLength, displayHeigth, displayWidth, lineFreq, lineVel, EpilMode, minExplR, maxExplR, explFreq, cardioMode);
     while (true) {
         man.startLines();
     }

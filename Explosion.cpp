@@ -16,13 +16,18 @@ int Explosion::getRad() {
 }
 
 vector<vector<int>> Explosion::katsu(vector<vector<int>> permissiveMatrix, bool cardioMode) {
-    for (int x = xCoord - curR - 1; x <= xCoord + curR + 1; x++) {
-        for (int y = yCoord - curR - 1; y <= yCoord + curR + 1; y++) { //runs through coordinates where the circle may be
+    //if (cardioMode) curR *= 2;
+    for (int x = xCoord - curR*2 - 1; x <= xCoord + curR*2 + 1; x++) {
+        for (int y = yCoord - curR - 5; y <= yCoord + curR + 1; y++) { //runs through coordinates where the circle may be
             if (x >= 0 && x < xMaxCoord && y >= 0 && y < yMaxCoord) { //in screen check
                 if (curR > minR) { //it will do smth if it is not the first call
                     if (cardioMode) { //cardio mode in develop
-                        val = pow(xCoord, 2) + pow(y - yCoord - sqrt(abs(x - xCoord)), 2);
-                        if (val <= 100) {
+                        curR--;
+                        val = pow((x - xCoord) * (1/curR), 2) + pow((y - yCoord) * (-1/(curR/3)) - sqrt(abs((x - xCoord) * (1/curR))), 2);
+                        curR -= 0.1;
+                        val1 = pow((x - xCoord) * (1/curR), 2) + pow((y - yCoord) * (-1/(curR/3)) - sqrt(abs((x - xCoord) * (1/curR))), 2);
+                        curR += 1.1;
+                        if (val <= 1 && val1 >= 1) {
                             if (permissiveMatrix[y][x] == 100) sym->clearSym(x, y);
                             permissiveMatrix[y][x] -= 100;
                         }
@@ -43,9 +48,13 @@ vector<vector<int>> Explosion::katsu(vector<vector<int>> permissiveMatrix, bool 
                 //same thing but draws the symbol anyway
                 if (curR <= maxR + 1) {
                     if (cardioMode) {
-                        val = pow(xCoord, 2) + pow(y - yCoord - sqrt(abs(x - xCoord)), 2);
-                        if (val <= 10) {
-                            sym->drawSym(x, y, rand() % 15 + 1, 'n');
+                        //val = pow((pow(x - 60, 2) + pow(y - 15, 2) - 100/*diam*/), 3) - pow(x - 60, 2) * pow(y - 15, 3);
+                        val = pow((x - xCoord) * (1/curR), 2) + pow((y - yCoord) * (-1/(curR/3)) - sqrt(abs((x - xCoord) * (1/curR))), 2);
+                        curR -= 0.1;
+                        val1 = pow((x - xCoord) * (1/curR), 2) + pow((y - yCoord) * (-1/(curR/3)) - sqrt(abs((x - xCoord) * (1/curR))), 2);
+                        curR += 0.1;
+                        if (val <= 1 && val1 >= 1) {
+                            sym->drawSym(x, y, 13, 'n');
                             permissiveMatrix[y][x] += 100;
                         }
                     } else {

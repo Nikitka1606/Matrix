@@ -1,5 +1,5 @@
 #include "Manager.h"
-Manager::Manager(int len, int height, int width, int freq, int speed, char epilFlag, int minExplR, int maxExplR, int explFreq) {
+Manager::Manager(int len, int height, int width, int freq, int speed, char epilFlag, int minExplR, int maxExplR, int explFreq, char cardioMode) {
     lenLin = len;
     this->height = height;
     this->width = width;
@@ -11,6 +11,8 @@ Manager::Manager(int len, int height, int width, int freq, int speed, char epilF
     maxER = maxExplR;
     freqExpl = explFreq;
     freqTime = 0.0;
+
+    if (cardioMode == 'y' || cardioMode == 'Y') this->cardioMode = true;
 
     for (int j = 0; j <= width; j++) {
         zeroFill.push_back(0);
@@ -37,7 +39,7 @@ void Manager::startLines() {
         timeStart = clock();
         if ((double)(timeStart - bombsTimeDeltas[b]) / CLOCKS_PER_SEC >= 0.5) { //every 0.5 of sec it wide the circles
             bombsTimeDeltas[b] = timeStart;
-            permissiveMatrix = bombs[b]->katsu(permissiveMatrix, false);
+            permissiveMatrix = bombs[b]->katsu(permissiveMatrix, cardioMode);
         }
         if (bombs[b]->getRad() > maxER + 2) {
             delete bombs[b];
@@ -58,7 +60,7 @@ void Manager::startLines() {
                 Explosion *expl = new Explosion(xy.first + 1, xy.second, minER, maxER, height, width);
                 bombs.push_back(expl);
                 bombsTimeDeltas.push_back(0.0);
-                permissiveMatrix = expl->katsu(permissiveMatrix, false);
+                permissiveMatrix = expl->katsu(permissiveMatrix, cardioMode);
             }
 
             if (xy.second > height + Lines[line]->getLen() || Lines[line]->getLen() < 1) {

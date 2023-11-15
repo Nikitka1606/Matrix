@@ -13,6 +13,7 @@ private:
     char epilFlag; // epilepsy flag
     double spawnTime; //section of time in which it will try to spawn line
     double speed; // lines speed
+    bool cardioMode = false;
 
     clock_t timeStart;
     clock_t freqTime;
@@ -27,6 +28,6 @@ private:
     vector<double> linesTimeDeltas; //containers with variables that help to determine the moment of move
     vector<double> bombsTimeDeltas; //
 public:
-    Manager(int, int, int, int, int, char, int, int, int);
+    Manager(int, int, int, int, int, char, int, int, int, char);
     void startLines();
 };
