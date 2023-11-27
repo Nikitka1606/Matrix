@@ -17,4 +17,6 @@ add_executable(Matrix
         Figure.cpp
         Explosion.h
         Explosion.cpp
+        MyVector.h
+        MyVector.cpp
 )

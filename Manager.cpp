@@ -10,6 +10,7 @@ Manager::Manager(int len, int height, int width, int freq, int speed, char epilF
     minER = minExplR;
     maxER = maxExplR;
     freqExpl = explFreq;
+    timeStart = 0;
     freqTime = 0.0;
 
     if (cardioMode == 'y' || cardioMode == 'Y') this->cardioMode = true;
@@ -43,8 +44,8 @@ void Manager::startLines() {
         }
         if (bombs[b]->getRad() > maxER + 2) {
             delete bombs[b];
-            bombs.erase(bombs.begin() + b);
-            bombsTimeDeltas.erase(bombsTimeDeltas.begin() + b);
+            bombs.erase(b);
+            bombsTimeDeltas.erase(b);
         }
     }
 
@@ -65,7 +66,7 @@ void Manager::startLines() {
 
             if (xy.second > height + Lines[line]->getLen() || Lines[line]->getLen() < 1) {
                 delete Lines[line];
-                Lines.erase(Lines.begin() + line);
+                Lines.erase(line);
             }
         }
     }

@@ -91,6 +91,13 @@ build CMakeFiles/Matrix.dir/Explosion.cpp.obj: CXX_COMPILER__Matrix_unscanned_De
   OBJECT_DIR = CMakeFiles\Matrix.dir
   OBJECT_FILE_DIR = CMakeFiles\Matrix.dir
 
+build CMakeFiles/Matrix.dir/MyVector.cpp.obj: CXX_COMPILER__Matrix_unscanned_Debug C$:/Users/halni/CLionProjects/Matrix/MyVector.cpp || cmake_object_order_depends_target_Matrix
+  DEP_FILE = CMakeFiles\Matrix.dir\MyVector.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/halni/CLionProjects/Matrix/.
+  OBJECT_DIR = CMakeFiles\Matrix.dir
+  OBJECT_FILE_DIR = CMakeFiles\Matrix.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Matrix
@@ -99,7 +106,7 @@ build CMakeFiles/Matrix.dir/Explosion.cpp.obj: CXX_COMPILER__Matrix_unscanned_De
 #############################################
 # Link the executable Matrix.exe
 
-build Matrix.exe: CXX_EXECUTABLE_LINKER__Matrix_Debug CMakeFiles/Matrix.dir/Matrix.cpp.obj CMakeFiles/Matrix.dir/Symbol.cpp.obj CMakeFiles/Matrix.dir/Line.cpp.obj CMakeFiles/Matrix.dir/Manager.cpp.obj CMakeFiles/Matrix.dir/Figure.cpp.obj CMakeFiles/Matrix.dir/Explosion.cpp.obj
+build Matrix.exe: CXX_EXECUTABLE_LINKER__Matrix_Debug CMakeFiles/Matrix.dir/Matrix.cpp.obj CMakeFiles/Matrix.dir/Symbol.cpp.obj CMakeFiles/Matrix.dir/Line.cpp.obj CMakeFiles/Matrix.dir/Manager.cpp.obj CMakeFiles/Matrix.dir/Figure.cpp.obj CMakeFiles/Matrix.dir/Explosion.cpp.obj CMakeFiles/Matrix.dir/MyVector.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Matrix.dir

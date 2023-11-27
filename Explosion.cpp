@@ -15,7 +15,7 @@ int Explosion::getRad() {
     return curR;
 }
 
-vector<vector<int>> Explosion::katsu(vector<vector<int>> permissiveMatrix, bool cardioMode) {
+MyVector<MyVector<int>> Explosion::katsu(MyVector<MyVector<int>> permissiveMatrix, bool cardioMode) {
     //if (cardioMode) curR *= 2;
     for (int x = xCoord - curR*2 - 1; x <= xCoord + curR*2 + 1; x++) {
         for (int y = yCoord - curR - 5; y <= yCoord + curR + 1; y++) { //runs through coordinates where the circle may be

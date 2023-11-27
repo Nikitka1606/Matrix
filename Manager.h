@@ -20,13 +20,13 @@ private:
 
     Symbol *sym = nullptr; // works only with projection of permissive matrix
 
-    vector<Line*> Lines; //container with lines pointers
-    vector<Explosion*> bombs; //same to the circles of explosion
+    MyVector<Line*> Lines; //container with lines pointers
+    MyVector<Explosion*> bombs; //same to the circles of explosion
     pair<int, int> xy;
-    vector<int> zeroFill;
-    vector<vector<int>> permissiveMatrix; //this matrix will contain data of lines intersections
-    vector<double> linesTimeDeltas; //containers with variables that help to determine the moment of move
-    vector<double> bombsTimeDeltas; //
+    MyVector<int> zeroFill;
+    MyVector<MyVector<int>> permissiveMatrix; //this matrix will contain data of lines intersections
+    MyVector<double> linesTimeDeltas; //containers with variables that help to determine the moment of move
+    MyVector<double> bombsTimeDeltas; //
 public:
     Manager(int, int, int, int, int, char, int, int, int, char);
     void startLines();
