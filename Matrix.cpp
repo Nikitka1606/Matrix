@@ -21,18 +21,6 @@ int main() {
     char EpilMode;
     char cardioMode;
     printf("Matrix: the prodolzenie\n");
-    /*
-    while (pass == false) {
-        printf("Enter the frequency of mind reading [1-30] > ");
-        scanf_s("%i", &lineFreq);
-        if (lineFreq > 30 || lineFreq < 1) {
-            printf("Entered frequency must be in this range: [1-30]\n");
-        }
-        else {
-            pass = true;
-        }
-    }
-    pass = false;*/
 //next bunch of code just take input values correctly
     while (true) {
         try {

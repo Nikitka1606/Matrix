@@ -18,5 +18,5 @@ add_executable(Matrix
         Explosion.h
         Explosion.cpp
         MyVector.h
-        MyVector.cpp
+        PermissiveMatrix.h
 )

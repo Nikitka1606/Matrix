@@ -15,12 +15,18 @@ Manager::Manager(int len, int height, int width, int freq, int speed, char epilF
 
     if (cardioMode == 'y' || cardioMode == 'Y') this->cardioMode = true;
 
-    for (int j = 0; j <= width; j++) {
+    for (int i = 0; i < 32; i++){
+        for (int j = 0; j < 122; j++){
+            permissiveMatrix[i][j] = 0;
+        }
+    }
+
+    /*for (int j = 0; j <= width; j++) {
         zeroFill.push_back(0);
     }
     for (int i = 0; i <= height + 1; i++) {
         permissiveMatrix.push_back(zeroFill);
-    }
+    }*/
 
     sym = new Symbol();
 }
@@ -40,7 +46,7 @@ void Manager::startLines() {
         timeStart = clock();
         if ((double)(timeStart - bombsTimeDeltas[b]) / CLOCKS_PER_SEC >= 0.5) { //every 0.5 of sec it wide the circles
             bombsTimeDeltas[b] = timeStart;
-            permissiveMatrix = bombs[b]->katsu(permissiveMatrix, cardioMode);
+            bombs[b]->katsu(permissiveMatrix, cardioMode);
         }
         if (bombs[b]->getRad() > maxER + 2) {
             delete bombs[b];
@@ -54,14 +60,14 @@ void Manager::startLines() {
         if ((double)(timeStart - linesTimeDeltas[line]) / CLOCKS_PER_SEC >= speed) {
             linesTimeDeltas[line] = timeStart;
 
-            permissiveMatrix = Lines[line]->moveLine(permissiveMatrix);
+            Lines[line]->moveLine(permissiveMatrix);
             xy = Lines[line]->getCoords();
             if (rand() % (1001 / freqExpl) == 0) { //if line moves, it can explode with a chance
-                permissiveMatrix = Lines[line]->exuplosion(permissiveMatrix);
+                Lines[line]->exuplosion(permissiveMatrix);
                 Explosion *expl = new Explosion(xy.first + 1, xy.second, minER, maxER, height, width);
                 bombs.push_back(expl);
                 bombsTimeDeltas.push_back(0.0);
-                permissiveMatrix = expl->katsu(permissiveMatrix, cardioMode);
+                expl->katsu(permissiveMatrix, cardioMode);
             }
 
             if (xy.second > height + Lines[line]->getLen() || Lines[line]->getLen() < 1) {

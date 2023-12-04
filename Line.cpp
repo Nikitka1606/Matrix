@@ -15,7 +15,7 @@ Line::Line(int len, int maxY, int maxX, char epilFlag) {
     sym = new Symbol();
 }
 
-MyVector<MyVector<int>> Line::exuplosion(MyVector<MyVector<int>> permissiveMatrix) {
+void Line::exuplosion(int (*permissiveMatrix)[122]) {
     if (yCoord > length - 1) {
         for (int x = xCoord; x < xCoord + 3; x++) {
             if (x % 2 == (yCoord - length) % 2) {
@@ -27,14 +27,14 @@ MyVector<MyVector<int>> Line::exuplosion(MyVector<MyVector<int>> permissiveMatri
         }
     }
     length--;
-    return permissiveMatrix;
+    //return permissiveMatrix;
 }
 
 int Line::getLen() const{
     return length;
 }
 
-MyVector<MyVector<int>> Line::moveLine(MyVector<MyVector<int>> permissiveMatrix) {
+void Line::moveLine(int (*permissiveMatrix)[122]) {
     if (yCoord < yMaxCoord) {
         for (int x = xCoord; x < xCoord + 3; x++) {
             if (x % 2 == yCoord % 2) {
@@ -60,7 +60,7 @@ MyVector<MyVector<int>> Line::moveLine(MyVector<MyVector<int>> permissiveMatrix)
         }
     }
     yCoord++;
-    return permissiveMatrix;
+    //return permissiveMatrix;
 }
 
 Line::~Line() {

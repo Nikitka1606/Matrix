@@ -24,7 +24,7 @@ private:
     MyVector<Explosion*> bombs; //same to the circles of explosion
     pair<int, int> xy;
     MyVector<int> zeroFill;
-    MyVector<MyVector<int>> permissiveMatrix; //this matrix will contain data of lines intersections
+    int permissiveMatrix[32][122]; //this matrix will contain data of lines intersections
     MyVector<double> linesTimeDeltas; //containers with variables that help to determine the moment of move
     MyVector<double> bombsTimeDeltas; //
 public:

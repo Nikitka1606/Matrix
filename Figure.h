@@ -1,5 +1,5 @@
 #include "Symbol.h"
-#include "MyVector.cpp"
+#include "MyVector.h"
 class Figure{
 protected:
     int xCoord;

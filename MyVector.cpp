@@ -1,6 +1,7 @@
-#include "MyVector.h"
+/*//#include "MyVector.h"
 
 template<typename T>
+
 void  MyVector<T>::push_back(const T &value) {
     if (elementsCount == capacity) {
         capacity = (capacity == 0) ? 1 : capacity * 2;
@@ -10,10 +11,9 @@ void  MyVector<T>::push_back(const T &value) {
         }
         delete[] currentContainer;
         currentContainer = newData;
-        newData = nullptr;
     }
-    elementsCount++;
-    currentContainer[elementsCount] = value;
+
+    currentContainer[elementsCount++] = value;
 }
 
 template<typename T>
@@ -43,5 +43,5 @@ T& MyVector<T>::operator[](size_t index){
 
 template<typename T>
 MyVector<T>::~MyVector(){
-    if (currentContainer) delete[] currentContainer;
-}
+    delete[] currentContainer;
+}*/

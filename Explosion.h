@@ -11,7 +11,9 @@ private:
     double kSqueeze;
 public:
     Explosion(int, int, int, int, int, int);
-    MyVector<MyVector<int>> katsu(MyVector<MyVector<int>>, bool); //spawn and widen the circle of explosion
+    void katsu(int (*permissiveMatrix)[122], bool); //spawn and widen the circle of explosion
     int getRad();
     ~Explosion();
 };
+
+0
