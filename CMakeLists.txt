@@ -19,4 +19,6 @@ add_executable(Matrix
         Explosion.cpp
         MyVector.h
         PermissiveMatrix.h
+        List.h
+        LinkedList.h
 )

@@ -15,5 +15,3 @@ public:
     int getRad();
     ~Explosion();
 };
-
-0

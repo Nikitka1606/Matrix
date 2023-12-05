@@ -1,7 +1,7 @@
-#include <iostream>
+#include "LinkedList.h"
 
 template <typename T>
-class MyVector {
+class MyVector: public LinkedList<T> {
 private:
     T *data;
     size_t capacity;
@@ -18,7 +18,7 @@ public:
     }
 
     ~MyVector() {
-        delete[] data;
+        clear();
     }
 
     void push_back(const T& value) {
@@ -42,7 +42,7 @@ public:
             --length;
         }
         else{
-            throw std::out_of_range("Index out of range in erase");
+            throw std::out_of_range("Index out of range");
         }
     }
 
@@ -55,5 +55,9 @@ public:
             return data[index];
         }
         throw std::out_of_range("Index out of range");
+    }
+
+    void clear() {
+        delete[] data;
     }
 };
